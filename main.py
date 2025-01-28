@@ -1,21 +1,27 @@
 from random import randint
 from graphic_arts.start_game_banner import run_screensaver
 
+"""Документация к RPG игре. Описывает основную логику игры,
+   а именно приветствие, выбор персонажа, выбор действий.
+"""
+
 
 def attack(char_name: str, char_class: (str | None)) -> str:
+    """Возвратить урон, нанесенный противнику"""
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику '
-                'равный {5 + randint(3, 5)}')
+                f'равный {5 + randint(3, 5)}')
     if char_class == 'mage':
         return (f'{char_name} нанёс урон противнику '
-                'равный {5 + randint(5, 10)}')
+                f'равный {5 + randint(5, 10)}')
     if char_class == 'healer':
         return (f'{char_name} нанёс урон противнику '
-                'равный {5 + randint(-3, -1)}')
+                f'равный {5 + randint(-3, -1)}')
     return (f'{char_name} не нанёс атаку')
 
 
 def defence(char_name: str, char_class: (str | None)) -> str:
+    """Возвратить кол-во блокориующего урона"""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -26,6 +32,8 @@ def defence(char_name: str, char_class: (str | None)) -> str:
 
 
 def special(char_name: str, char_class: (str | None)) -> str:
+    """Возвратить название примененного
+    специального условия"""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 '«Выносливость {80 + 25}»')
@@ -37,6 +45,7 @@ def special(char_name: str, char_class: (str | None)) -> str:
 
 
 def start_training(char_name: str, char_class: (str | None)) -> str:
+    """Выбрать команду для дальнейшего продолжения игры"""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -61,6 +70,7 @@ def start_training(char_name: str, char_class: (str | None)) -> str:
 
 
 def choice_char_class() -> (str | None):
+    """Выбрать определенный класс пресонажа"""
     approve_choice = None
     char_class = None
     while approve_choice != 'y':
